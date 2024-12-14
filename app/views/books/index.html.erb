@@ -1,2 +1,5 @@
-<div class="container">
-  <div class="row">
+<% @books.each do |book| %>
+  <div>
+    <%= image_tag book.get_image %>
+  </div>
+<% end %>
