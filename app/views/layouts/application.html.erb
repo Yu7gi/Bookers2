@@ -22,45 +22,31 @@
           <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-              <li class="nav-item nav-link">
-                <span><i class="fa-solid fa-house"></i> <%= link_to 'Home', user_path(current_user.id), class: "text-light" %> </span>
-              </li>
-              <li>
-                <a class="nav-item nav-link text-light" href="/users">
-                  <i class="fa-solid fa-users"></i> Users
-                </a>
-              </li>
-              <li>
-                <a class="nav-item nav-link text-light" href="/books">
-                  <i class="fa-solid fa-book-open"></i> Books
-                </a>
-              </li>
-              <li>
-                <a class="nav-item nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
-                  <i class="fa-solid fa-right-from-bracket"></i> Log out
-                </a>
-              </li>
+              <%= link_to user_path(current_user.id), class: "nav-item nav-link text-light" do %>
+                <i class="fa-solid fa-house"></i> Home
+              <% end %>
+              <%= link_to users_path, class: "nav-item nav-link text-light" do %>
+                <i class="fa-solid fa-users"></i> Users
+              <% end %>
+              <%= link_to books_path, class: "nav-item nav-link text-light" do %>
+                <i class="fa-solid fa-book-open"></i> Books
+              <% end %>
+              <%= link_to destroy_user_session_path, class: "nav-item nav-link text-light", method: :delete do %>
+                <i class="fa-solid fa-right-from-bracket"></i> Log out
+              <% end %>
             <% else %>
-              <li>
-                <a class="nav-item nav-link text-light" href="/" >
-                  <i class="fa-solid fa-house"></i> Home
-                </a>
-              </li>
-              <li>
-                <a class="nav-item nav-link text-light" href="/home/about">
-                  <i class="fa-solid fa-link"></i> About
-                </a>
-              </li>
-              <li>
-                <a class="nav-item nav-link text-light" href="/users/sign_up">
-                  <i class="fa-solid fa-user-plus"></i> Sign up
-                </a>
-              </li>
-              <li>
-                <a class="nav-item nav-link text-light" href="/users/sign_in">
-                  <i class="fa-solid fa-right-to-bracket"></i> Log in
-                </a>
-              </li>
+              <%= link_to root_path, class: "nav-item nav-link text-light" do %>
+                <i class="fa-solid fa-house"></i> Home
+              <% end %>
+              <%= link_to about_path, class: "nav-item nav-link text-light" do %>
+                <i class="fa-solid fa-link"></i> About
+              <% end %>
+              <%= link_to new_user_registration_path, class: "nav-item nav-link text-light" do %>
+                <i class="fa-solid fa-user-plus"></i> Sign up
+              <% end %>
+              <%= link_to new_user_session_path, class: "nav-item nav-link text-light" do %>
+                <i class="fa-solid fa-right-to-bracket"></i> Log in
+              <% end %>
             <% end %>
             </ul>
           </div>
