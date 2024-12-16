@@ -8,8 +8,8 @@ class BooksController < ApplicationController
   end
   
   def index
+    @user = User.find(parms[:id])
     @books = Book.all
-    @user = current_user
   end
 
   def show
