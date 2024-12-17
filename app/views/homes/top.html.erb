@@ -5,14 +5,21 @@
       <p>In <strong><i class="fa-solid fa-book"></i>Bookers</strong>,</p>
       <p>you can share and exchange your opinions, inpressions, and emotions </p>
       <p>about various books!</p>
-      <div class="btn-wrpper mx-auto">
-        <div class="row">
-          <a class="btn btn-info btn-block mb-3" href="/users/sign_in" role="button">Log in</a>
-        </div>
-        <div class="row">
-          <a class="btn btn-success btn-block mb-3" href="/users/sign_up" role="button">Sign up</a>
-        </div>
-      </div>
+      <% if user_signed_in? %>
+        <%= link_to user_path(current_user.id), class: "text-light" do %>
+          <button class="btn btn-info btn-block mb-3">Log in</button>
+        <% end %>
+        <%= link_to user_path(current_user.id), class: "text-light" do %>
+          <button class="btn btn-success btn-block mb-3">Sign up</button>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path, class: "text-light" do %>
+          <button class="btn btn-info btn-block mb-3">Log in</button>
+        <% end %>
+        <%= link_to new_user_registration_path, class: "text-light" do %>
+          <button class="btn btn-success btn-block mb-3">Sign up</button>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
