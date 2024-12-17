@@ -10,7 +10,8 @@
           <tr>
             <td>
               <%= link_to user_path(@book.user.id) do %>
-                <%= image_tag @user.get_profile_image(80,80) %><%= @book.user.name %>
+                <%= image_tag @book.user.get_profile_image(80,80) %><br>
+                <%= @book.user.name %>
               <% end %>
             </td>
             <td>
@@ -27,7 +28,7 @@
               </td>
               <td>
                 <button class="btn btn-danger">
-                  <%= link_to "Destroy", book_path(@book), class: "text-light", method: :delete %>
+                  <%= link_to "Destroy", book_path(@book), class: "text-light", method: :delete, "data-confirm" => "本当に消しますか？" %>
                 </button>
               </td>
             <% end %>
