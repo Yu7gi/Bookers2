@@ -1,4 +1,12 @@
-<div class="container">
+<div class="container mt-3">
+<% if @book.errors.any? %>
+<h3><%= @book.errors.count %> error prohibited this obj from being saved:</h3>
+<ul>
+  <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
   <div class="row">
     <div class="col-md-3">
       <%= render 'list', user: current_user %>
@@ -14,7 +22,7 @@
             <tr>
               <td>
                 <%= link_to user_path(book.user.id) do %>
-                  <%= image_tag @user.get_profile_image(80,80) %>
+                  <%= image_tag book.user.get_profile_image(80,80) %>
                 <% end %>
               </td>
               <td>
